@@ -1,0 +1,114 @@
+body {
+  font-family: 'Droid Sans Mono', monospace;
+  font-size: 18px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+h1 {
+  text-align: center;
+}
+
+#root {
+  padding: 25px;
+  padding-top: 10px;
+  padding-bottom: 50px;
+  min-height: 100vh;
+}
+
+button, .button {
+  font-family: 'Droid Sans Mono', monospace;
+  background-color: transparent;
+  border: 1px solid black;
+  box-shadow: 4px 4px 0px 0px rgba(0,0,0,1);
+  transition: box-shadow .3s;
+  padding: 10px;
+}
+
+.button {
+  margin-top: 25px;
+  text-align: center;
+  display: block;
+  text-decoration: none;
+  color: #000;
+}
+
+button:hover, .button:hover {
+  box-shadow: 1px 1px 0px 0px rgba(0,0,0,1);
+}
+
+.button-wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.coin-list-wrapper {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.coin-list {
+  padding-left: 0;
+}
+
+.coin-list__item {
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  margin: 10px 0;
+  padding: 5px 0;
+}
+
+.coin-list__item p{
+  margin: 0;
+}
+
+.coin-list__item-price {
+  font-size: 14px;
+}
+
+.coin-list__item-value {
+  display: flex;
+  justify-content: space-between;
+}
+
+.coin-list__sum {
+  text-align: right;
+}
+
+.coin-list__item-delete {
+  font-size: 14px;
+}
+
+.add-coin-modal {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,.7);
+}
+
+.add-coin-modal__modal {
+  background-color: #fff;
+  display: block;
+  border: 1px solid black;
+  margin: 0 auto;
+  margin-top: 50px;
+  max-width: 500px;
+  padding: 25px;
+}
+
+.add-coin-form input, .add-coin-form select{
+  display: block;
+  margin: 5px auto;
+  width: 100%;
+}
+
+@media (max-width: 320px) {
+  button, .button {
+    padding: 10px 5px;
+  }
+}
