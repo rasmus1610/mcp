@@ -12,12 +12,7 @@
     <div id="root">
       <div class="coin-list-wrapper">
         <h1>my crypto portfolio</h1>
-        <ul class="coin-list">
-          <li v-for="(coin, key) in coins" class="coin-list__item">
-            <p class="coin-list__item-value"><span> {{ coin.amount }} {{coin.name}} <a href="#" @click.prevent="deleteCoin(key)" class="coin-list__item-delete">delete</a></span> <span>{{ value(coin) }}€</span></p>
-            <p class="coin-list__item-price">current price: {{ coin.price ? coin.price.toFixed(2) : "N/A" }}€</p>
-          </li>
-        </ul>
+        <coin-list :coins="coins" :value="value"></coin-list>
         <p v-if="Object.keys(coins).length === 0">Add your first coin below</p>
         <hr>
         <p class="coin-list__sum">whole portfolio: {{ sum(coins) }}€</p>
@@ -25,24 +20,10 @@
           <button type="button" name="button" @click="showModal=true">+ add coin</button>
           <button type="button" name="button" @click="getNewData">get new data</button>
         </div>
-        <div class="add-coin-modal" v-if="showModal">
-          <div class="add-coin-modal__modal">
-            <h2>Add new coin</h2>
-            <form class="add-coin-form" @submit.prevent="addNewCoin">
-              <select v-model="currentCoin">
-                <option value="btc">Bitcoin</option>
-                <option value="eth">Ethereum</option>
-                <option value="xmr">Monero</option>
-              </select>
-              <input type="number" v-model="currentAmount" placeholder="amount" step="0.000001" />
-              <input type="submit" value="add" />
-            </form>
-            <a href="#" @click.prevent="showModal=false">close</a>
-          </div>
-        </div>
+        <coin-modal v-if="showModal" @close-modal="showModal=false" @add-coin="addNewCoin"></coin-modal>
       </div>
     </div>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.4.2/vue.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.4.2/vue.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue-resource@1.3.4"></script>
     <script type="text/javascript" src="main.js"> </script>
   </body>
