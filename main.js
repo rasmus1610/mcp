@@ -62,7 +62,6 @@ const vm = new Vue({
       this.showModal = false
     },
     deleteCoin: function(key) {
-      console.log(key)
       Vue.delete(vm.coins, key)
     },
   },
