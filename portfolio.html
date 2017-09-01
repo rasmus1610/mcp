@@ -12,7 +12,7 @@
     <div id="root">
       <div class="coin-list-wrapper">
         <h1>my crypto portfolio</h1>
-        <coin-list :coins="coins" :value="value"></coin-list>
+        <coin-list :coins="coins" :value="value" @delete-coin="deleteCoin"></coin-list>
         <p v-if="Object.keys(coins).length === 0">Add your first coin below</p>
         <hr>
         <p class="coin-list__sum">whole portfolio: {{ sum(coins) }}€</p>

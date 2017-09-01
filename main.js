@@ -28,7 +28,6 @@ const vm = new Vue({
         .toFixed(2)
     },
     getNewData: function() {
-
       Object.keys(this.coins).forEach( coin => {
         this.$http.get(`https://api.cryptonator.com/api/ticker/${coin}-eur`).then(res => {
           this.coins[coin].price = +res.body.ticker.price
@@ -36,14 +35,15 @@ const vm = new Vue({
       })
     },
     addNewCoin: function({ coin, amount }) {
+      const names = {
+        xrp: 'Ripple (XRP)',
+        btc: 'Bitcoin (BTC)',
+        eth: 'Ethereum (ETH)',
+        ltc: 'Litecoin (LTC)',
+        bch: 'Bitcoin Cash (BCH)'
+      }
+
       if (!(coin in this.coins) && coin in names) {
-        const names = {
-          xrp: 'Ripple (XRP)',
-          btc: 'Bitcoin (BTC)',
-          eth: 'Ethereum (ETH)',
-          ltc: 'Litecoin (LTC)',
-          bch: 'Bitcoin Cash (BCH)'
-        }
 
         const coinObj = {
           amount: +amount,
@@ -123,6 +123,11 @@ const vm = new Vue({
         </ul>
       `,
       props: ['coins', 'value'],
+      methods: {
+        deleteCoin: function(key) {
+          this.$emit('delete-coin', key)
+        }
+      }
     }
   }
 })
