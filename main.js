@@ -17,15 +17,17 @@ const vm = new Vue({
       localStorage.setItem('coins', JSON.stringify(newCoins))
     }
   },
+  computed: {
+    sum: function() {
+      return Object.keys(this.coins)
+        .map(key => this.value(this.coins[key]) )
+        .reduce((sum, value) => sum + value, 0)
+        .toFixed(2)
+    },
+  },
   methods: {
     value: function(coin) {
        return +(coin.price * coin.amount).toFixed(2)
-    },
-    sum: function(coins) {
-      return Object.keys(coins)
-        .map(key => this.value(coins[key]) )
-        .reduce((sum, value) => sum + value, 0)
-        .toFixed(2)
     },
     getNewData: function() {
       Object.keys(this.coins).forEach( coin => {

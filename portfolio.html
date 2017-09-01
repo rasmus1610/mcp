@@ -15,7 +15,7 @@
         <coin-list :coins="coins" :value="value" @delete-coin="deleteCoin"></coin-list>
         <p v-if="Object.keys(coins).length === 0">Add your first coin below</p>
         <hr>
-        <p class="coin-list__sum">whole portfolio: {{ sum(coins) }}€</p>
+        <p class="coin-list__sum">whole portfolio: {{ sum }}€</p>
         <div class="button-wrapper">
           <button type="button" name="button" @click="showModal=true">+ add coin</button>
           <button type="button" name="button" @click="getNewData">get new data</button>
